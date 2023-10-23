@@ -1,0 +1,15 @@
+
+<h2>新規投稿</h2>
+
+<%= form_with url: tasks_create_path do |f| %>
+  <p>タイトル</p>
+  <%= f.text_field :title %></br>
+
+  <p>詳細</p>
+  <%= f.text_area :detail, size: "50x10" %></br>
+  <%= f.submit %>
+<% end %>
+
+
+
+
