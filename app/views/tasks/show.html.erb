@@ -10,5 +10,5 @@
 <p>詳細</p>
 <%= @task.detail %><br>
 <%= link_to "編集", "/tasks/edit/#{@task.id}" %>
-
+<%= link_to "削除", "/tasks/#{@task.id}", data: { turbo_method: :delete } %>
 
