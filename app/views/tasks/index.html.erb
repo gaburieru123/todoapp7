@@ -11,6 +11,7 @@
 <%= link_to "詳細", tasks_show_id_path(task) %>
 <%# 上２つのリンクはどちらも詳細ページへリンクするようにしている %>
 <%= link_to "編集", "/tasks/edit/#{task.id}" %>
+<%= link_to "削除", "/tasks/#{task.id}", data: { turbo_method: :delete } %>
 </li>
 <%# <h3>詳細</h3> %>
 <%# <%= task.detail %>

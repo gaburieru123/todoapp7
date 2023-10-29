@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "tasks/show/:id" => "tasks#show", as: 'tasks_show_id' #asでprefix名（tasks_show_id）をつけている。
   get "tasks/edit/:id" => "tasks#edit"
   post "tasks/update/:id" => "tasks#update"
+  delete "tasks/:id" => "tasks#destroy"
   
 
 
