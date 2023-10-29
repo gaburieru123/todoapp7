@@ -24,5 +24,25 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  def edit
+    @task = Task.find_by(id: params[:id])
+  end
+
+
+  def update
+    @task = Task.find_by(id: params[:id])
+    @task.title = params[:title]
+    @task.detail = params[:detail]
+
+    if @task.save
+      flash[:notice] = "タスク更新に成功しました"
+      redirect_to "/"
+    else
+      flash[:error] = @task.errors.full_messages
+      redirect_to "/tasks/edit/#{@task.id}"
+      #画面遷移した時に初期値（前の入力内容）を入れておきたいので、redirect_toで画面遷移している。
+    end    
+  end
+
 
 end
