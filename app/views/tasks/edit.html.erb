@@ -1,0 +1,17 @@
+<%= link_to "トップページ", root_path %>
+<%= link_to "新規投稿", tasks_new_path %>
+
+<h3>編集</h3>
+
+
+<%= form_with url: "/tasks/update/#{@task.id}" do |f| %>
+  <p>タイトル</p>
+  <%= f.text_field :title, value: @task.title %></br>
+
+  <p>詳細</p>
+  <textarea name="detail" cols="50" rows="10"><%= @task.detail %></textarea>
+  <%# @task.detailで初期値を入れいている %>
+  <%# nameにdetailを設定することで、更新する内容をパラメーターとして渡すようにしている %>
+  <%#<%= f.text_area :detail, size: "50x10" %></br>
+  <%= f.submit '更新' %>
+<% end %>

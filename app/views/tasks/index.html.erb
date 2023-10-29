@@ -8,7 +8,9 @@
 <% @tasks.each do |task| %>
 <li>
 <%= link_to "#{task.title}", tasks_show_id_path(task) %><br>
-
+<%= link_to "詳細", tasks_show_id_path(task) %>
+<%# 上２つのリンクはどちらも詳細ページへリンクするようにしている %>
+<%= link_to "編集", "/tasks/edit/#{task.id}" %>
 </li>
 <%# <h3>詳細</h3> %>
 <%# <%= task.detail %>
