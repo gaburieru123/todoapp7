@@ -1,8 +1,14 @@
 
 <%= link_to "新規投稿", tasks_new_path %>
 
-<h1>Todoapp</h1>
+    <%= link_to new_user_registration_path do %>
+      <h2 class="btn btn-primary mr-2">新規登録</h2>
+    <% end %>
+    <%= link_to new_user_session_path do %>
+      <h2 class="btn btn-success ml-2">ログイン</h2>
+    <% end %>
 
+<h1>Todoapp</h1>
 
 
 <% @tasks.each do |task| %>
