@@ -1,6 +1,12 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!, except: [:new]
+  # ログインしていない場合、ログイン画面に移動する
+  before_action :correct_task,only: [:create, :show, :edit, :update]
+  # URLに直打ちした時にトップページやログイン画面へ移動する。
+  
   def index
-    @tasks = Task.all
+    @tasks = Task.where(user_id: current_user.id)
+    # トップページに表示するタスクを自分のタスクのみに設定
   end
 
   def new
@@ -50,6 +56,20 @@ class TasksController < ApplicationController
     task.destroy
     flash[:notice] = "タスク削除に成功しました"
     redirect_to "/"
+  end
+
+
+  private
+
+  def correct_task
+    @task = Task.find_by(id:params[:id])
+    if @task == nil
+      redirect_to "/"
+      # @taskのidがURL直打ちした時にnilならトップページへ移動
+    elsif @task.user_id != current_user.id
+      redirect_to new_user_session_path
+      # @taskとログインユーザーidが異なっていたら、ログイン画面へ移動
+    end
   end
 
 
