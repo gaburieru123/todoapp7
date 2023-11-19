@@ -9,6 +9,7 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(title: params[:title], detail: params[:detail])
+    @task.user_id = current_user.id
       if @task.save
         flash[:notice] = "タスク作成に成功しました"
         redirect_to "/"
