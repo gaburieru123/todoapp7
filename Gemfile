@@ -73,7 +73,8 @@ end
 
 gem 'devise'
 
-gem 'debug'
+
+gem 'kaminari'
 
 
 
