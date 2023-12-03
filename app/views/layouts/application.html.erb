@@ -22,6 +22,7 @@
         <div><%= link_to "マイページ", user_path(current_user.id), class: "text-white" %></div>
         <div><%= link_to "マイページ編集", edit_user_registration_path(current_user.id), class: "text-white" %></div> 
         <div><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
+        <div><%= button_to "アカウント削除", user_path(current_user.id), method: :delete, data: { turbo_confirm: "本当に削除しますか?" }, class: "text-white" %></div>
       </header>
     <% end %> 
 
