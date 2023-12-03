@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  def index
-  end
-
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.page(params[:page]).per(5).reverse_order
   end
 
   def destroy
