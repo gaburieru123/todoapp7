@@ -1,6 +1,9 @@
-      <% if user_signed_in? && @user == current_user %>
-      <h1>マイページ詳細</h1>
-      <% else %>
-      <h1><%= @user.name %>さんのページ</h1>
-      <% end %>
+  <% if user_signed_in? && @user == current_user %>
+    <h1>マイページ詳細</h1>
+  <% end %>
 
+  <% @tasks.each do |task| %>
+    <%= link_to "#{task.title}", tasks_show_id_path(task) %><br>
+  <% end %>
+
+  <%= paginate @tasks %> 
