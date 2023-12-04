@@ -1,27 +1,13 @@
-
-<%= link_to "新規投稿", tasks_new_path %>
-
-    <%= link_to new_user_registration_path do %>
-      <h2 class="btn btn-primary mr-2">新規登録</h2>
-    <% end %>
-    <%= link_to new_user_session_path do %>
-      <h2 class="btn btn-success ml-2">ログイン</h2>
-    <% end %>
-
 <h1>Todoapp</h1>
 
-
 <% @tasks.each do |task| %>
-<li>
-<%= link_to "#{task.title}", tasks_show_id_path(task) %><br>
-<%= link_to "詳細", tasks_show_id_path(task) %>
-<%# 上２つのリンクはどちらも詳細ページへリンクするようにしている %>
-<%= link_to "編集", "/tasks/edit/#{task.id}" %>
-<%= link_to "削除", "/tasks/#{task.id}", data: { turbo_method: :delete } %>
-</li>
-<%# <h3>詳細</h3> %>
-<%# <%= task.detail %>
-<%# <br><br>  %>
+  <li>
+    <%= link_to "#{task.title}", tasks_show_id_path(task) %><br>
+    <%= link_to "詳細", tasks_show_id_path(task) %>
+    <%# 上２つのリンクはどちらも詳細ページへリンクするようにしている %>
+    <%= link_to "編集", "/tasks/edit/#{task.id}" %>
+    <%= link_to "削除", "/tasks/#{task.id}", data: { turbo_method: :delete } %>
+  </li>
 <% end %>
 
 
