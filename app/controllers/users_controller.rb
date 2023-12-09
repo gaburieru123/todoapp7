@@ -7,9 +7,14 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    user.destroy
-    flash[:notice] = "アカウント削除に成功しました"
-    redirect_to new_user_registration_path
+    binding.b
+    if user.id == current_user.id && user.destroy
+      flash[:notice] = "アカウント削除に成功しました"
+      redirect_to new_user_registration_path
+    else
+      flash[:notice] = "無効な操作です。アカウント削除はできません。"
+      redirect_to user_path
+    end
   end
 
 end
